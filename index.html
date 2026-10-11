@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartGlove — Smart Multi-Sensor Wearable for Real-Time Elderly Health Anomaly & Fall Detection | SLIIT R26-IT-108</title>
+  <meta name="description" content="Official academic research showcase for Project R26-IT-108: A dual-node wearable system powered by Edge AI and Sensor Fusion for arrhythmia screening, fall detection, hypoxemia/sepsis alerts, and stress monitoring.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+</head>
+<body>
+
+  <!-- ===================================================================
+       NAVIGATION BAR
+       =================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand" aria-label="SmartGlove Research Homepage">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Smart<span>Glove</span></span>
+          <span class="brand-badge">R26-IT-108 • SLIIT</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#domain" class="nav-link">Domain</a>
+        <a href="#components" class="nav-link">Components</a>
+        <a href="#milestones" class="nav-link">Milestones</a>
+        <a href="#documents" class="nav-link">Documents</a>
+        <a href="#presentations" class="nav-link">Presentations</a>
+        <a href="#team" class="nav-link">About Us</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#domain" class="btn btn-primary btn-sm">Explore Research</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       HERO SECTION
+       =================================================================== -->
+  <section class="hero" id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge-wrap">
+          <span class="badge-sliit">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            SLIIT Faculty of Computing
+          </span>
+          <span class="badge-id">Group ID: R26-IT-108</span>
+          <span class="badge-track">AIMS Research Group</span>
+        </div>
+
+        <h1 class="hero-title">
+          Smart Multi-Sensor Wearable for Real-Time Elderly <span class="gradient-text">Health Anomaly & Fall Detection</span>
+        </h1>
+
+        <p class="hero-desc">
+          An edge-computing dual-node wearable ecosystem combining a sensor-instrumented medical glove and a hip-worn kinematic belt. Powered by lightweight TinyML inference to deliver beat-level arrhythmia screening, dual-stage fall verification, silent hypoxemia alerts, and objective stress detection for independent older adults.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#domain" class="btn btn-primary">
+            Explore Research Domain
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="documentation/Thesis_R26_IT_108_Common.pdf" target="_blank" class="btn btn-outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            View Thesis Draft
+          </a>
+          <a href="#architecture" class="btn btn-white">
+            Architecture
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat-card">
+            <div class="stat-val">4<span>+</span></div>
+            <div class="stat-lbl">Edge AI Models</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-val">2</div>
+            <div class="stat-lbl">Wearable Nodes</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-val">&lt;1.5<span>s</span></div>
+            <div class="stat-lbl">Fall Alert Latency</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-val">0-100</div>
+            <div class="stat-lbl">Master Risk Index</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Simulated Telemetry Visualizer Card -->
+      <div class="hero-visual">
+        <div class="device-showcase-card">
+          <div class="showcase-header">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: var(--navy-900);">SmartGlove Telemetry Hub</div>
+              <div style="font-size: 0.72rem; color: var(--slate-500); font-family: var(--font-mono);">Local ESP32 Stream • 250 Hz</div>
+            </div>
+            <div class="device-status">
+              <span class="live-pulse"></span> Active Online
+            </div>
+          </div>
+
+          <!-- Master Risk Index -->
+          <div class="risk-meter-box">
+            <div class="risk-meter-header">
+              <span class="risk-meter-title">Unified Master Risk Score</span>
+              <span class="badge-tag badge-green" id="live-risk-status">Normal Baseline</span>
+            </div>
+            <div class="risk-score-display">
+              <div class="risk-num" id="live-risk-num">16</div>
+              <div class="risk-max">/ 100 Risk Index</div>
+            </div>
+            <div class="risk-bar-track">
+              <div class="risk-bar-fill" id="live-risk-fill" style="width: 16%;"></div>
+            </div>
+          </div>
+
+          <!-- 4 Telemetry Metrics Grid -->
+          <div class="telemetry-grid">
+            <div class="telemetry-item">
+              <div class="telemetry-label">
+                <span>Heart Rate (ECG)</span>
+                <span style="color: var(--blue-600);">●</span>
+              </div>
+              <div class="telemetry-val" id="live-hr">74 <small>BPM</small></div>
+              <canvas id="ecg-canvas" class="waveform-container"></canvas>
+            </div>
+
+            <div class="telemetry-item">
+              <div class="telemetry-label">
+                <span>SpO2 Saturation</span>
+                <span style="color: var(--cyan-500);">●</span>
+              </div>
+              <div class="telemetry-val" id="live-spo2">98 <small>%</small></div>
+              <div style="font-size: 0.72rem; color: var(--slate-500); margin-top: 8px;">Pulse Oximetry OK</div>
+            </div>
+
+            <div class="telemetry-item">
+              <div class="telemetry-label">
+                <span>Skin Temperature</span>
+                <span style="color: var(--emerald-500);">●</span>
+              </div>
+              <div class="telemetry-val" id="live-temp">36.4 <small>°C</small></div>
+              <div style="font-size: 0.72rem; color: var(--slate-500); margin-top: 8px;">MLX90614 Infrared</div>
+            </div>
+
+            <div class="telemetry-item">
+              <div class="telemetry-label">
+                <span>Skin Conductance</span>
+                <span style="color: var(--amber-500);">●</span>
+              </div>
+              <div class="telemetry-val" id="live-gsr">1.42 <small>µS</small></div>
+              <div style="font-size: 0.72rem; color: var(--slate-500); margin-top: 8px;">GSR Stress: Relaxed</div>
+            </div>
+          </div>
+
+          <!-- Dual-Node Architecture Chips -->
+          <div class="dual-node-badge">
+            <div class="node-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              Node 1: Glove (ESP32-S3)
+            </div>
+            <div class="node-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Node 2: Belt (ESP32-C3)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       DOMAIN SECTION
+       =================================================================== -->
+  <section class="section section-white" id="domain">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">01 / Research Domain</span>
+        <h2 class="section-title">The Domain & Problem Context</h2>
+        <p class="section-subtitle">
+          Addressing the healthcare challenges of the rapidly ageing population through continuous physiological screening and edge-driven emergency response.
+        </p>
+      </div>
+
+      <!-- Literature Survey / Background -->
+      <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-xl); padding: 2.5rem; margin-bottom: 3.5rem;">
+        <h3 style="font-size: 1.45rem; margin-bottom: 1rem; color: var(--navy-900);">Literature Survey & Demographic Urgency</h3>
+        <p style="font-size: 0.98rem; color: var(--slate-600); line-height: 1.75; margin-bottom: 1.25rem;">
+          The World Health Organization (WHO) projects that by 2030, one in six people globally will be aged 60 years or over, expanding to over 2.1 billion by 2050. Sri Lanka represents one of the most rapidly ageing demographics in South Asia, where the percentage of senior citizens is steadily climbing while traditional joint-family caregiver structures evolve into nuclear units with adults away during working hours.
+        </p>
+        <p style="font-size: 0.98rem; color: var(--slate-600); line-height: 1.75; margin-bottom: 0;">
+          Elderly individuals living independently or in assisted living facilities face severe risks of unmonitored medical trauma. Acute conditions such as intermittent cardiac arrhythmias, silent hypoxia, thermal dysregulation leading to sepsis, and catastrophic falls occur suddenly without warning. Standard clinic check-ups only provide isolated snapshots, while commercial consumer wearables suffer from frequent false fall triggers and depend strictly on cloud connectivity that fails during rural network dropouts.
+        </p>
+      </div>
+
+      <!-- Research Problem Breakdown -->
+      <div style="margin-bottom: 3.5rem;">
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; text-align: center;">Core Research Problems Identified</h3>
+        <p style="text-align: center; color: var(--slate-500); max-width: 650px; margin: 0 auto 2.5rem auto; font-size: 0.95rem;">
+          Through comprehensive literature analysis and clinical consultation, three fundamental vulnerabilities in current senior monitoring systems were isolated:
+        </p>
+
+        <div class="problem-grid">
+          <div class="problem-card">
+            <div class="problem-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h4 class="problem-title">Isolated Parameter Monitoring</h4>
+            <p class="problem-text">
+              Commercial wristbands track basic isolated metrics (such as daily steps or spot heart rate) in isolation. They lack compound multi-anomaly correlation required to predict serious systemic crises, such as cross-evaluating skin temperature with heart rate for sepsis deterioration, or correlating motion with galvanic skin conductance for distress.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            </div>
+            <h4 class="problem-title">High False-Alarm Rates in Fall Detection</h4>
+            <p class="problem-text">
+              Wrist-only accelerometers trigger constant false positives from routine upper-limb activities such as vigorous hand gestures, table banging, or forceful clapping. This causes severe "alarm fatigue" among family caregivers, leading them to ultimately disable or ignore critical safety alerts.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            </div>
+            <h4 class="problem-title">Absence of Emergency Dispatch Routing</h4>
+            <p class="problem-text">
+              Most existing health trackers rely on passive in-app smartphone push notifications that often go unread when caregivers are away. They fail to establish immediate, low-latency WebSocket routing and automated geolocation dispatch to emergency ambulance response units during life-threatening falls or collapses.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Gap Comparative Matrix -->
+      <div style="margin-bottom: 4rem;">
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Research Gap Analysis Matrix</h3>
+        <p style="color: var(--slate-500); font-size: 0.95rem; margin-bottom: 1.5rem;">
+          How the SmartGlove multi-sensor ecosystem bridges critical limitations of existing academic and commercial paradigms:
+        </p>
+
+        <div class="table-responsive">
+          <table class="research-gap-table">
+            <thead>
+              <tr>
+                <th>Existing Technology / Domain</th>
+                <th>Previous Study Contribution</th>
+                <th>Critical Limitations</th>
+                <th>SmartGlove Research Gap Addressed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Traditional Holter Monitors</strong></td>
+                <td>Continuous raw multi-channel ECG recording</td>
+                <td>Requires post-hoc offline clinical review; lacks real-time edge scoring or automated escalation</td>
+                <td><span class="gap-highlight">Real-time 250 Hz AD8232 ECG acquisition with on-device ML screening and immediate alert routing</span></td>
+              </tr>
+              <tr>
+                <td><strong>Basic Heart Rate Trackers</strong></td>
+                <td>Average beats-per-minute (BPM) pulse counts</td>
+                <td>Ignores morphology and RR-interval variability required to detect silent arrhythmia beats</td>
+                <td><span class="gap-highlight">32-feature extraction pipeline (pPeak, qPeak, QRS/QT intervals, RR ratios) for multi-class arrhythmia screening</span></td>
+              </tr>
+              <tr>
+                <td><strong>Wrist Accelerometer Detectors</strong></td>
+                <td>Single peak-G acceleration thresholding</td>
+                <td>Extremely high false-alarm rates triggered by daily hand gestures and upper-limb motion</td>
+                <td><span class="gap-highlight">Dedicated hip-worn belt node for center-of-mass sensing, isolating arm movement noise</span></td>
+              </tr>
+              <tr>
+                <td><strong>Single-Stage Fall Triggers</strong></td>
+                <td>Detects sudden impact spikes (>2.5G)</td>
+                <td>Ignores post-impact orientation, mistaking forceful sitting or bed flopping for falls</td>
+                <td><span class="gap-highlight">Dual-stage algorithm combining vector impact (>24 m/s²) with 1.5s post-impact tilt (>55°) & immobility verification</span></td>
+              </tr>
+              <tr>
+                <td><strong>Standard Pulse Oximeters</strong></td>
+                <td>Static spot-check percentage display</td>
+                <td>Provides isolated numbers without continuous trend tracking or predictive deterioration modeling</td>
+                <td><span class="gap-highlight">Continuous raw Red/IR PPG waveform acquisition via MAX30102 with rolling window BIDMC hypoxemia ML model</span></td>
+              </tr>
+              <tr>
+                <td><strong>Hospital ICU Sepsis Models</strong></td>
+                <td>High-dimensional clinical sepsis prediction</td>
+                <td>Requires 40+ laboratory blood tests unavailable in low-cost home wearable environments</td>
+                <td><span class="gap-highlight">Vital-only Sepsis Random Forest model trained on PhysioNet ICU data using accessible wearable signals (SpO2, HR, Temp)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Single-Biomarker Stress Trackers</strong></td>
+                <td>Heart rate variability stress estimation</td>
+                <td>Susceptible to physical exercise artifacts, misclassifying routine walking as mental stress</td>
+                <td><span class="gap-highlight">Multimodal fusion combining Galvanic Skin Response (GSR), skin temp, heart rate, and facial expression analysis</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Research Objectives -->
+      <div class="objectives-wrapper">
+        <div class="objective-box-main">
+          <span class="section-tag" style="background: rgba(255,255,255,0.15); color: #93c5fd; border-color: rgba(255,255,255,0.2);">Primary Goal</span>
+          <h3>Main Research Objective</h3>
+          <p>
+            To design, implement, and rigorously evaluate a privacy-centric, edge-computing dual-node IoT smart wearable system (SmartGlove) capable of continuous physiological screening, kinematic fall/immobility verification, and low-latency emergency dispatch routing via WebSockets and OpenStreetMap integration.
+          </p>
+          <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <span class="badge-tag badge-green">Zero Cloud Dependency for Fall Alerts</span>
+            <span class="badge-tag badge-green">Sub-1.5s Latency</span>
+            <span class="badge-tag badge-green">Privacy-Preserving Edge Inference</span>
+          </div>
+        </div>
+
+        <div class="specific-objectives-list">
+          <div class="spec-obj-card">
+            <div class="spec-obj-num">01</div>
+            <div class="spec-obj-text">
+              <h4>Cardiovascular Anomaly Screening</h4>
+              <p>Acquire 250 Hz single-lead ECG via AD8232, extract 32 morphological features, and perform real-time arrhythmia screening trained on the MIT-BIH dataset.</p>
+            </div>
+          </div>
+
+          <div class="spec-obj-card">
+            <div class="spec-obj-num">02</div>
+            <div class="spec-obj-text">
+              <h4>Hip-Worn Fall & Immobility Verification</h4>
+              <p>Deploy a dual-stage kinematic verification algorithm on ESP32-C3 correlating high-G impact with tilt angle and 3-8 Hz Parkinsonian tremor screening.</p>
+            </div>
+          </div>
+
+          <div class="spec-obj-card">
+            <div class="spec-obj-num">03</div>
+            <div class="spec-obj-text">
+              <h4>Respiratory & Thermal Deterioration</h4>
+              <p>Implement continuous MAX30102 PPG hypoxemia scoring (&lt;92%) and multi-vital sepsis risk prediction combining MLX90614 skin temperature with heart rate trends.</p>
+            </div>
+          </div>
+
+          <div class="spec-obj-card">
+            <div class="spec-obj-num">04</div>
+            <div class="spec-obj-text">
+              <h4>Multisensor Affective Stress Detection</h4>
+              <p>Fuse Galvanic Skin Response (GSR), heart rate variability, gyroscope motion, and facial expressions using a WESAD-trained model to distinguish distress from exercise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Architecture & Methodology -->
+      <div class="architecture-box" id="architecture">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; gap: 1rem;">
+          <div>
+            <span class="section-tag">System Methodology</span>
+            <h3 style="font-size: 1.5rem; color: var(--navy-900);">Multi-Layer System Architecture</h3>
+            <p style="color: var(--slate-500); font-size: 0.92rem; margin-bottom: 0;">End-to-end data flow: Hardware Sensors → Edge ESP32 Nodes → Local Hub ML Models → Master Risk Fusion → Caregiver & Ambulance Portals.</p>
+          </div>
+          <a href="images/system_architecture.png" target="_blank" class="btn btn-primary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            Enlarge Architecture
+          </a>
+        </div>
+
+        <div class="arch-image-wrap">
+          <img src="images/system_architecture.png" alt="SmartGlove End-to-End System Architecture Diagram" loading="lazy">
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.75rem;">
+          <div style="background: var(--slate-50); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200);">
+            <h5 style="font-size: 0.95rem; color: var(--navy-900); margin-bottom: 0.4rem;">1. Sensing & Edge Layer</h5>
+            <p style="font-size: 0.82rem; color: var(--slate-600); line-height: 1.5; margin-bottom: 0;">Dual microcontrollers (ESP32-S3 Mini on glove, ESP32-C3 Supermini on belt) capture physiological and kinematic telemetry with local digital filtering.</p>
+          </div>
+          <div style="background: var(--slate-50); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200);">
+            <h5 style="font-size: 0.95rem; color: var(--navy-900); margin-bottom: 0.4rem;">2. Inference & Fusion Layer</h5>
+            <p style="font-size: 0.82rem; color: var(--slate-600); line-height: 1.5; margin-bottom: 0;">FastAPI local hub executes 5 ML pipelines, calculating individual anomaly probabilities and synthesizing the 0-100 Master Risk Index.</p>
+          </div>
+          <div style="background: var(--slate-50); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200);">
+            <h5 style="font-size: 0.95rem; color: var(--navy-900); margin-bottom: 0.4rem;">3. Telemetry & Dispatch Layer</h5>
+            <p style="font-size: 0.82rem; color: var(--slate-600); line-height: 1.5; margin-bottom: 0;">Real-time WebSockets push alerts to family caregivers and stream live GPS coordinates directly to emergency medical ambulance dashboards.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technologies Used -->
+      <div style="margin-top: 4rem;">
+        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Technologies & Frameworks</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          <div class="tech-category">
+            <div class="tech-cat-title">Hardware & Sensors</div>
+            <div class="tech-pills-wrap">
+              <span class="tech-pill">AD8232 ECG Module (250 Hz)</span>
+              <span class="tech-pill">MAX30102 Pulse Oximeter & PPG</span>
+              <span class="tech-pill">MLX90614 Infrared Skin Temp</span>
+              <span class="tech-pill">MPU6050 6-Axis IMU (Acc + Gyro)</span>
+              <span class="tech-pill">Galvanic Skin Response (GSR)</span>
+              <span class="tech-pill">ESP32-S3 Mini Microcontroller</span>
+              <span class="tech-pill">ESP32-C3 Supermini Microcontroller</span>
+            </div>
+          </div>
+
+          <div class="tech-category">
+            <div class="tech-cat-title">AI / ML Pipelines & Datasets</div>
+            <div class="tech-pills-wrap">
+              <span class="tech-pill">Random Forest Arrhythmia Classifier</span>
+              <span class="tech-pill">1D-CNN Beat Morphology Engine</span>
+              <span class="tech-pill">Decision Tree Kinematic Fall Model</span>
+              <span class="tech-pill">BIDMC Hypoxemia Logistic Regression</span>
+              <span class="tech-pill">PhysioNet 2019 ICU Sepsis Model</span>
+              <span class="tech-pill">WESAD Multimodal Stress Detection</span>
+              <span class="tech-pill">MIT-BIH Arrhythmia Database</span>
+              <span class="tech-pill">SisFall & KFall Datasets</span>
+            </div>
+          </div>
+
+          <div class="tech-category">
+            <div class="tech-cat-title">Software, Backend & Protocols</div>
+            <div class="tech-pills-wrap">
+              <span class="tech-pill">Python 3.11</span>
+              <span class="tech-pill">FastAPI High-Performance API</span>
+              <span class="tech-pill">WebSockets Real-Time Protocol</span>
+              <span class="tech-pill">SQLAlchemy ORM</span>
+              <span class="tech-pill">SQLite & Firebase Realtime DB</span>
+              <span class="tech-pill">Scikit-Learn & TensorFlow Lite</span>
+              <span class="tech-pill">Arduino C++ Embedded Framework</span>
+            </div>
+          </div>
+
+          <div class="tech-category">
+            <div class="tech-cat-title">Dashboards & Visualizations</div>
+            <div class="tech-pills-wrap">
+              <span class="tech-pill">HTML5 & Modern CSS3</span>
+              <span class="tech-pill">Vanilla JavaScript (ES6+)</span>
+              <span class="tech-pill">OpenStreetMap Live Routing</span>
+              <span class="tech-pill">Leaflet.js Geolocation Tracking</span>
+              <span class="tech-pill">HTML5 Canvas Real-Time ECG Rendering</span>
+              <span class="tech-pill">Flutter Cross-Platform Mobile Client</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       THE 4 RESEARCH COMPONENTS SECTION
+       =================================================================== -->
+  <section class="section section-pale" id="components">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">02 / Research Components</span>
+        <h2 class="section-title">The Four Core Research Subsystems</h2>
+        <p class="section-subtitle">
+          Independently engineered, clinically aligned machine learning components unified into one cohesive elderly healthcare monitoring wearable.
+        </p>
+      </div>
+
+      <div class="cards-grid-4">
+        <!-- Component 1 -->
+        <div class="component-card">
+          <div class="comp-number">Component 01</div>
+          <div class="comp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="comp-title">Cardiovascular Anomaly & Arrhythmia Screening</h3>
+          <div class="comp-researcher">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+            Abeysinghe S.A.M.M. (IT22081148)
+          </div>
+          <p class="comp-desc">
+            Continuous beat-level arrhythmia screening using 250 Hz AD8232 single-lead ECG coupled with MLX90614 infrared temperature sensor to detect cardiac rhythm irregularities and heat-stress before visible collapse occurs.
+          </p>
+          <div class="comp-specs">
+            <div class="spec-row"><span class="spec-k">Sensor:</span><span class="spec-v">AD8232 (250 Hz)</span></div>
+            <div class="spec-row"><span class="spec-k">ML Model:</span><span class="spec-v">Random Forest / 1D-CNN</span></div>
+            <div class="spec-row"><span class="spec-k">Dataset:</span><span class="spec-v">MIT-BIH Arrhythmia</span></div>
+            <div class="spec-row"><span class="spec-k">Features:</span><span class="spec-v">32 Morphological Peaks</span></div>
+            <div class="spec-row"><span class="spec-k">Emergency Trigger:</span><span class="spec-v">Arrhythmia Risk ≥85%</span></div>
+          </div>
+          <a href="documentation/Thesis_IT22081148_Abeysinghe.pdf" target="_blank" class="btn btn-outline btn-sm">
+            View Component Thesis
+          </a>
+        </div>
+
+        <!-- Component 2 -->
+        <div class="component-card">
+          <div class="comp-number">Component 02</div>
+          <div class="comp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="comp-title">Kinematic Fall & Immobility Detection (Smart Belt)</h3>
+          <div class="comp-researcher">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+            Lakshan N.K.T. (IT22196156)
+          </div>
+          <p class="comp-desc">
+            A hip-worn smart belt isolating center-of-mass kinematics. Employs a dual-stage algorithm combining vector impact magnitude (>24 m/s²) with post-impact tilt angle (>55°) and 3-8 Hz Parkinsonian tremor screening.
+          </p>
+          <div class="comp-specs">
+            <div class="spec-row"><span class="spec-k">Sensor:</span><span class="spec-v">MPU6050 6-Axis IMU</span></div>
+            <div class="spec-row"><span class="spec-k">Node MCU:</span><span class="spec-v">ESP32-C3 Supermini</span></div>
+            <div class="spec-row"><span class="spec-k">Dataset:</span><span class="spec-v">SisFall & KFall</span></div>
+            <div class="spec-row"><span class="spec-k">Verification:</span><span class="spec-v">Impact + 1.5s Window Tilt</span></div>
+            <div class="spec-row"><span class="spec-k">Special Feature:</span><span class="spec-v">3-8 Hz Tremor Band Power</span></div>
+          </div>
+          <a href="documentation/Thesis_IT22196156_Lakshan.pdf" target="_blank" class="btn btn-outline btn-sm">
+            View Component Thesis
+          </a>
+        </div>
+
+        <!-- Component 3 -->
+        <div class="component-card">
+          <div class="comp-number">Component 03</div>
+          <div class="comp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+          </div>
+          <h3 class="comp-title">Respiratory, Hypoxemia & Thermal Warning System</h3>
+          <div class="comp-researcher">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+            Dissanayaka D.M.S.K. (IT22291196)
+          </div>
+          <p class="comp-desc">
+            Early detection of silent hypoxemia (SpO2 &lt; 92%) via MAX30102 pulse oximeter raw PPG signals, correlated with MLX90614 temperature and heart rate trends to detect early systemic inflammatory sepsis onset.
+          </p>
+          <div class="comp-specs">
+            <div class="spec-row"><span class="spec-k">Sensors:</span><span class="spec-v">MAX30102 + MLX90614</span></div>
+            <div class="spec-row"><span class="spec-k">Hypoxemia ML:</span><span class="spec-v">Logistic Regression (BIDMC)</span></div>
+            <div class="spec-row"><span class="spec-k">Sepsis ML:</span><span class="spec-v">Random Forest (PhysioNet ICU)</span></div>
+            <div class="spec-row"><span class="spec-k">Vital Fusion:</span><span class="spec-v">Temp + HR + SpO2 Trends</span></div>
+            <div class="spec-row"><span class="spec-k">Alert Threshold:</span><span class="spec-v">SpO2 &lt; 85% / High SIRS</span></div>
+          </div>
+          <a href="documentation/Thesis_IT22291196_Dissanayaka.pdf" target="_blank" class="btn btn-outline btn-sm">
+            View Component Thesis
+          </a>
+        </div>
+
+        <!-- Component 4 -->
+        <div class="component-card">
+          <div class="comp-number">Component 04</div>
+          <div class="comp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a4 4 0 1 0 4 4 4 4 0 0 0-4-4z"/></svg>
+          </div>
+          <h3 class="comp-title">Stress Detection & Affective Computing System</h3>
+          <div class="comp-researcher">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+            Edirisinghe A.P. Peshala (IT22146410)
+          </div>
+          <p class="comp-desc">
+            Quantifying silent emotional distress and unspoken pain in non-verbal elderly individuals via Galvanic Skin Response (GSR), skin temperature, and motion fusion, distinguishing psychological distress from physical exercise.
+          </p>
+          <div class="comp-specs">
+            <div class="spec-row"><span class="spec-k">Sensors:</span><span class="spec-v">GSR + MPU6050 + MAX30102</span></div>
+            <div class="spec-row"><span class="spec-k">ML Model:</span><span class="spec-v">Random Forest (WESAD)</span></div>
+            <div class="spec-row"><span class="spec-k">Fusion Formula:</span><span class="spec-v">0.65×ML + 0.20×GSR + 0.15×Gyro</span></div>
+            <div class="spec-row"><span class="spec-k">Vision Engine:</span><span class="spec-v">Facial Stress Screening</span></div>
+            <div class="spec-row"><span class="spec-k">Scoring Range:</span><span class="spec-v">0 - 100% Stress Likelihood</span></div>
+          </div>
+          <a href="documentation/Thesis_IT22146410_Peshala.pdf" target="_blank" class="btn btn-outline btn-sm">
+            View Component Thesis
+          </a>
+        </div>
+      </div>
+
+      <!-- Model Performance Comparison Visualizer -->
+      <div style="margin-top: 3.5rem; background: var(--white); border-radius: var(--radius-xl); border: 1px solid var(--slate-200); padding: 2rem; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem;">
+          <div>
+            <h4 style="font-size: 1.3rem; color: var(--navy-900);">Evaluation Metrics & Validation Evidence</h4>
+            <p style="font-size: 0.9rem; color: var(--slate-500); margin-bottom: 0;">Balanced accuracy and confusion matrix comparisons across all 4 machine learning pipelines.</p>
+          </div>
+          <a href="images/model_comparison.png" target="_blank" class="btn btn-outline btn-sm">
+            View Model Comparison Graph
+          </a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;">
+          <a href="images/arrhythmia_overview.png" target="_blank" style="text-decoration: none;">
+            <div style="border: 1px solid var(--slate-200); border-radius: var(--radius-md); overflow: hidden; background: var(--slate-50); padding: 0.5rem; text-align: center;">
+              <img src="images/arrhythmia_overview.png" alt="Arrhythmia Model Metrics" style="height: 140px; width: 100%; object-fit: contain;">
+              <span style="font-size: 0.78rem; font-weight: 600; color: var(--navy-900); display: block; margin-top: 0.4rem;">Arrhythmia (99.8% Acc)</span>
+            </div>
+          </a>
+          <a href="images/hypoxemia_overview.png" target="_blank" style="text-decoration: none;">
+            <div style="border: 1px solid var(--slate-200); border-radius: var(--radius-md); overflow: hidden; background: var(--slate-50); padding: 0.5rem; text-align: center;">
+              <img src="images/hypoxemia_overview.png" alt="Hypoxemia Model Metrics" style="height: 140px; width: 100%; object-fit: contain;">
+              <span style="font-size: 0.78rem; font-weight: 600; color: var(--navy-900); display: block; margin-top: 0.4rem;">Hypoxemia (97.4% Acc)</span>
+            </div>
+          </a>
+          <a href="images/sepsis_overview.png" target="_blank" style="text-decoration: none;">
+            <div style="border: 1px solid var(--slate-200); border-radius: var(--radius-md); overflow: hidden; background: var(--slate-50); padding: 0.5rem; text-align: center;">
+              <img src="images/sepsis_overview.png" alt="Sepsis Model Metrics" style="height: 140px; width: 100%; object-fit: contain;">
+              <span style="font-size: 0.78rem; font-weight: 600; color: var(--navy-900); display: block; margin-top: 0.4rem;">Sepsis (96.2% Acc)</span>
+            </div>
+          </a>
+          <a href="images/stress_overview.png" target="_blank" style="text-decoration: none;">
+            <div style="border: 1px solid var(--slate-200); border-radius: var(--radius-md); overflow: hidden; background: var(--slate-50); padding: 0.5rem; text-align: center;">
+              <img src="images/stress_overview.png" alt="Stress Model Metrics" style="height: 140px; width: 100%; object-fit: contain;">
+              <span style="font-size: 0.78rem; font-weight: 600; color: var(--navy-900); display: block; margin-top: 0.4rem;">Stress Detection (94.8% Acc)</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       MILESTONES SECTION
+       =================================================================== -->
+  <section class="section section-white" id="milestones">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">03 / Project Timeline</span>
+        <h2 class="section-title">Milestones & Assessment Criteria</h2>
+        <p class="section-subtitle">
+          Sequential progression of project deliverables and formal academic review milestones as mandated by the SLIIT CDAP guidelines.
+        </p>
+      </div>
+
+      <!-- Interactive Milestone Dropdown Selector (SLIIT CDAP Slide 11 Requirement) -->
+      <div class="milestone-selector-box">
+        <div class="milestone-select-wrapper">
+          <label for="milestone-dropdown" style="font-weight: 700; color: var(--navy-900); font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Select Project Milestone to View Assessment Rubric:
+          </label>
+          <select id="milestone-dropdown" class="milestone-dropdown-select">
+            <option value="proposal">Milestone 01: Project Proposal & TAF (10%)</option>
+            <option value="pp1">Milestone 02: Progress Presentation 1 - PP1 (15%)</option>
+            <option value="pp2">Milestone 03: Progress Presentation 2 - PP2 (18%)</option>
+            <option value="final">Milestone 04: Final Assessment & Live Demonstration (40%)</option>
+            <option value="viva">Milestone 05: Viva Voce Oral Examination</option>
+          </select>
+        </div>
+        <div id="milestone-spotlight" class="spotlight-card">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Milestone 1 -->
+        <div class="timeline-item">
+          <div class="timeline-node completed">✓</div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <div>
+                <span class="badge-tag badge-green">Completed</span>
+                <span class="milestone-badge badge-marks">Weightage: 10%</span>
+              </div>
+              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--slate-500);">Month 02</span>
+            </div>
+            <h4 class="timeline-title">Project Proposal & Topic Assessment (TAF)</h4>
+            <p class="timeline-desc">
+              Formal problem formulation, domain viability review, literature survey of elderly trauma, hardware feasibility evaluation, and submission of the Topic Assessment Form (TAF) approved by the panel.
+            </p>
+            <div style="font-size: 0.82rem; color: var(--slate-500); display: flex; gap: 1rem; flex-wrap: wrap;">
+              <span>• Topic Assessment Form Approved</span>
+              <span>• Ethics & Public Dataset Clearance</span>
+              <span>• Sensor Node Architecture Finalized</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="timeline-item">
+          <div class="timeline-node completed">✓</div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <div>
+                <span class="badge-tag badge-green">Completed</span>
+                <span class="milestone-badge badge-marks">Weightage: 15%</span>
+              </div>
+              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--slate-500);">Month 05</span>
+            </div>
+            <h4 class="timeline-title">Progress Presentation 1 (PP1)</h4>
+            <p class="timeline-desc">
+              Initial individual component delivery and proof-of-concept prototype demonstration. Review of sensor interface stability (AD8232 ECG, MAX30102 PPG, MPU6050, GSR) and initial ML model training on secondary databases.
+            </p>
+            <div style="font-size: 0.82rem; color: var(--slate-500); display: flex; gap: 1rem; flex-wrap: wrap;">
+              <span>• 4 ML Training Pipelines Initialized</span>
+              <span>• Hardware Wiring & Enclosure Validation</span>
+              <span>• Supervisor Panel Review Passed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="timeline-item">
+          <div class="timeline-node completed">✓</div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <div>
+                <span class="badge-tag badge-green">Completed</span>
+                <span class="milestone-badge badge-marks">Weightage: 18%</span>
+              </div>
+              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--slate-500);">Month 08</span>
+            </div>
+            <h4 class="timeline-title">Progress Presentation 2 (PP2)</h4>
+            <p class="timeline-desc">
+              Dual-node hardware integration (Medical Glove Node + Waist Smart Belt), full FastAPI backend inference setup, 10/10 automated test suites passed, real-time WebSockets streaming, and ambulance emergency routing evaluation.
+            </p>
+            <div style="font-size: 0.82rem; color: var(--slate-500); display: flex; gap: 1rem; flex-wrap: wrap;">
+              <span>• Master Risk Score Fusion Operational</span>
+              <span>• 10/10 Unit Tests Passed</span>
+              <span>• OpenStreetMap Emergency Route Verified</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 4 -->
+        <div class="timeline-item">
+          <div class="timeline-node completed">✓</div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <div>
+                <span class="badge-tag badge-green">Completed</span>
+                <span class="milestone-badge badge-marks">Weightage: 17%</span>
+              </div>
+              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--slate-500);">Month 10</span>
+            </div>
+            <h4 class="timeline-title">Research Paper & Comprehensive Thesis Submission</h4>
+            <p class="timeline-desc">
+              Drafting and submission of the 53-page Common Integrated Solution Report, four individual comprehensive theses, IEEE-style research paper, and full engineering documentation guides.
+            </p>
+            <div style="font-size: 0.82rem; color: var(--slate-500); display: flex; gap: 1rem; flex-wrap: wrap;">
+              <span>• Common Integrated Thesis Draft Completed</span>
+              <span>• 4 Individual Theses Finalized</span>
+              <span>• Research Paper Draft Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 5 -->
+        <div class="timeline-item">
+          <div class="timeline-node" style="border-color: var(--blue-500);">⏳</div>
+          <div class="timeline-card" style="border-left: 4px solid var(--blue-600);">
+            <div class="timeline-meta">
+              <div>
+                <span class="badge-tag" style="background: #e0f2fe; color: #0369a1;">Final Phase</span>
+                <span class="milestone-badge badge-marks">Weightage: 40%</span>
+              </div>
+              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--slate-500);">Month 12</span>
+            </div>
+            <h4 class="timeline-title">Final Assessment, Live Product Demonstration & Viva</h4>
+            <p class="timeline-desc">
+              Final defense before the academic examination panel, comprehensive live hardware telemetry and dual-node emergency fall trigger demonstration, and final grading of the SmartGlove ecosystem.
+            </p>
+            <div style="font-size: 0.82rem; color: var(--slate-500); display: flex; gap: 1rem; flex-wrap: wrap;">
+              <span>• Final Examination Presentation Deck</span>
+              <span>• Live Dual-Node Hardware Demo</span>
+              <span>• Individual Viva Oral Examination</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       DOCUMENTS SECTION
+       =================================================================== -->
+  <section class="section section-pale" id="documents">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">04 / Official Deliverables</span>
+        <h2 class="section-title">Research Documents & Reports</h2>
+        <p class="section-subtitle">
+          Direct access to the comprehensive common integrated report, individual theses, topic assessment forms, and technical guides.
+        </p>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="doc-filter-bar">
+        <button class="filter-btn active" data-filter="all">All Documents (14)</button>
+        <button class="filter-btn" data-filter="thesis">Thesis Reports (5)</button>
+        <button class="filter-btn" data-filter="taf">Topic Assessment Forms - TAF (5)</button>
+        <button class="filter-btn" data-filter="guide">Research Paper & Guides (4)</button>
+      </div>
+
+      <!-- Group 1: Final Theses (5 Documents) -->
+      <div style="margin-bottom: 3.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; border-bottom: 2px solid var(--slate-200); padding-bottom: 0.75rem;">
+          <h3 style="font-size: 1.35rem; color: var(--navy-900); display: flex; align-items: center; gap: 0.6rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Final Comprehensive Theses (1 Common + 4 Individual)
+          </h3>
+          <span class="badge-tag badge-green">5 Documents</span>
+        </div>
+
+        <div class="cards-grid-3">
+          <!-- Main Integrated Thesis -->
+          <div class="doc-card" data-type="thesis">
+            <span class="doc-badge-type badge-thesis">Common Integrated Report</span>
+            <h4 class="doc-title">Smart Multi-Sensor Wearable Integrated Solution Report</h4>
+            <div class="doc-author">Group R26-IT-108 • 53 Pages</div>
+            <p class="doc-desc">
+              The full official master thesis encompassing system background, literature survey, 4-component integration, master risk fusion equations, and experimental evaluation evidence.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 951 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/Thesis_R26_IT_108_Common.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/Thesis_R26_IT_108_Common.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Individual Thesis 1 -->
+          <div class="doc-card" data-type="thesis">
+            <span class="doc-badge-type badge-thesis">Individual Thesis</span>
+            <h4 class="doc-title">Arrhythmia Screening from Wearable ECG</h4>
+            <div class="doc-author">Abeysinghe S.A.M.M. (IT22081148)</div>
+            <p class="doc-desc">
+              Comprehensive individual dissertation on 250 Hz AD8232 ECG signal filtering, R-peak extraction, and MIT-BIH-trained Random Forest arrhythmia screening.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 1.49 MB</span>
+              <div class="doc-actions">
+                <a href="documentation/Thesis_IT22081148_Abeysinghe.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/Thesis_IT22081148_Abeysinghe.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Individual Thesis 2 -->
+          <div class="doc-card" data-type="thesis">
+            <span class="doc-badge-type badge-thesis">Individual Thesis</span>
+            <h4 class="doc-title">Waist-Worn Smart Belt for Real-Time Fall Detection</h4>
+            <div class="doc-author">Lakshan N.K.T. (IT22196156)</div>
+            <p class="doc-desc">
+              Individual dissertation detailing center-of-mass kinematic sensing, Decision Tree modeling on SisFall, and 3-8 Hz Parkinsonian tremor screening.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 5.76 MB</span>
+              <div class="doc-actions">
+                <a href="documentation/Thesis_IT22196156_Lakshan.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/Thesis_IT22196156_Lakshan.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Individual Thesis 3 -->
+          <div class="doc-card" data-type="thesis">
+            <span class="doc-badge-type badge-thesis">Individual Thesis</span>
+            <h4 class="doc-title">Respiratory and Thermal Warning System</h4>
+            <div class="doc-author">Dissanayaka D.M.S.K. (IT22291196)</div>
+            <p class="doc-desc">
+              Individual dissertation detailing continuous pulse oximetry, BIDMC hypoxemia modeling, and PhysioNet multi-vital sepsis deterioration prediction.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 638 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/Thesis_IT22291196_Dissanayaka.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/Thesis_IT22291196_Dissanayaka.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Individual Thesis 4 -->
+          <div class="doc-card" data-type="thesis">
+            <span class="doc-badge-type badge-thesis">Individual Thesis</span>
+            <h4 class="doc-title">Neurological Stress & Affective Monitoring</h4>
+            <div class="doc-author">Edirisinghe A.P. Peshala (IT22146410)</div>
+            <p class="doc-desc">
+              Individual dissertation exploring Electrodermal Activity (GSR), WESAD dataset training, and vision-assisted facial stress quantification.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 2.14 MB</span>
+              <div class="doc-actions">
+                <a href="documentation/Thesis_IT22146410_Peshala.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/Thesis_IT22146410_Peshala.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 2: Topic Assessment Forms - TAF (5 Documents) -->
+      <div style="margin-bottom: 3.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; border-bottom: 2px solid var(--slate-200); padding-bottom: 0.75rem;">
+          <h3 style="font-size: 1.35rem; color: var(--navy-900); display: flex; align-items: center; gap: 0.6rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Topic Assessment Forms — TAF (1 Common + 4 Individual)
+          </h3>
+          <span class="badge-tag badge-green">5 Documents</span>
+        </div>
+
+        <div class="cards-grid-3">
+          <!-- Main TAF -->
+          <div class="doc-card" data-type="taf">
+            <span class="doc-badge-type badge-taf">Official Common TAF</span>
+            <h4 class="doc-title">Topic Assessment Form V2.1 (R26-IT-108)</h4>
+            <div class="doc-author">Supervisor Approved • 5 Pages</div>
+            <p class="doc-desc">
+              Official group charter and proposal document outlining research problem, SDG 3 contribution, sensor input layer, sub-objectives, and group matrix.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 507 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/TAF_R26_IT_108_Common.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/TAF_R26_IT_108_Common.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Individual TAF 1 -->
+          <div class="doc-card" data-type="taf">
+            <span class="doc-badge-type badge-taf">Individual TAF</span>
+            <h4 class="doc-title">Topic Assessment Form — Abeysinghe S.A.M.M.</h4>
+            <div class="doc-author">IT22081148 • Cardiovascular Anomaly</div>
+            <p class="doc-desc">
+              Initial individual research proposal describing the ECG hardware setup, MIT-BIH dataset scope, and specific objectives for cardiac anomaly screening.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 863 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/TAF_IT22081148_Abeysinghe.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/TAF_IT22081148_Abeysinghe.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Individual TAF 2 -->
+          <div class="doc-card" data-type="taf">
+            <span class="doc-badge-type badge-taf">Individual TAF</span>
+            <h4 class="doc-title">Topic Assessment Form — Lakshan N.K.T.</h4>
+            <div class="doc-author">IT22196156 • Kinematic Fall Detection</div>
+            <p class="doc-desc">
+              Initial individual research proposal for the hip-worn belt node, MPU6050 calibration, and two-stage impact plus orientation verification algorithm.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 1.03 MB</span>
+              <div class="doc-actions">
+                <a href="documentation/TAF_IT22196156_Lakshan.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/TAF_IT22196156_Lakshan.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Individual TAF 3 -->
+          <div class="doc-card" data-type="taf">
+            <span class="doc-badge-type badge-taf">Individual TAF</span>
+            <h4 class="doc-title">Topic Assessment Form — Dissanayaka D.M.S.K.</h4>
+            <div class="doc-author">IT22291196 • Respiratory & Thermal Warning</div>
+            <p class="doc-desc">
+              Initial individual research proposal for the SpO2 calibration, MLX90614 infrared temperature integration, and sepsis risk correlation algorithm.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 806 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/TAF_IT22291196_Dissanayaka.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/TAF_IT22291196_Dissanayaka.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Individual TAF 4 -->
+          <div class="doc-card" data-type="taf">
+            <span class="doc-badge-type badge-taf">Individual TAF</span>
+            <h4 class="doc-title">Topic Assessment Form — Peshala E.A.P.</h4>
+            <div class="doc-author">IT22146410 • Neurological Stress & Pain Monitoring</div>
+            <p class="doc-desc">
+              Initial individual research proposal detailing GSR sensor skin conductance interface, WESAD dataset training, and affective pain/stress monitoring logic.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 886 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/TAF_IT22146410_Peshala.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/TAF_IT22146410_Peshala.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 3: Research Paper & Technical Guides (4 Documents) -->
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; border-bottom: 2px solid var(--slate-200); padding-bottom: 0.75rem;">
+          <h3 style="font-size: 1.35rem; color: var(--navy-900); display: flex; align-items: center; gap: 0.6rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            Research Paper, Checklists & Engineering Guides
+          </h3>
+          <span class="badge-tag badge-green">4 Documents</span>
+        </div>
+
+        <div class="cards-grid-3">
+          <!-- Research Paper -->
+          <div class="doc-card" data-type="guide">
+            <span class="doc-badge-type badge-paper">IEEE Research Paper</span>
+            <h4 class="doc-title">SmartGlove Research Paper Publication Draft</h4>
+            <div class="doc-author">Academic Conference Draft • 7 Pages</div>
+            <p class="doc-desc">
+              Structured manuscript detailing experimental setup, confusion matrices, balanced accuracy metrics, and clinical implications of dual-node edge screening.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 748 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/SmartGlove_Research_Paper.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/SmartGlove_Research_Paper.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Guide: ML Engineering -->
+          <div class="doc-card" data-type="guide">
+            <span class="doc-badge-type badge-guide">Technical Guide</span>
+            <h4 class="doc-title">SmartGlove ML Models Engineering Guide</h4>
+            <div class="doc-author">Technical Reference Manual</div>
+            <p class="doc-desc">
+              Detailed engineering documentation covering model architectures, hyperparameter configurations, quantization for microcontrollers, and inference benchmarks.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 993 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/SmartGlove_ML_Models_Engineering_Guide.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/SmartGlove_ML_Models_Engineering_Guide.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Guide: User Guide -->
+          <div class="doc-card" data-type="guide">
+            <span class="doc-badge-type badge-guide">User Manual</span>
+            <h4 class="doc-title">SmartGlove Comprehensive User Guide</h4>
+            <div class="doc-author">Deployment & Operational Manual</div>
+            <p class="doc-desc">
+              Complete guide for seniors, family caregivers, and assisted care facility staff detailing hardware donning, strap maintenance, Wi-Fi pairing, and alert response.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 12 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/SmartGlove_Comprehensive_User_Guide.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/SmartGlove_Comprehensive_User_Guide.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Guide: Thesis Checklist -->
+          <div class="doc-card" data-type="guide">
+            <span class="doc-badge-type badge-guide">Checklist</span>
+            <h4 class="doc-title">CDAP Thesis & Project Deliverables Checklist</h4>
+            <div class="doc-author">Academic Compliance Document</div>
+            <p class="doc-desc">
+              Itemized compliance checklist ensuring adherence to SLIIT Faculty of Computing academic standards, ethics approvals, and formatting regulations.
+            </p>
+            <div class="doc-footer">
+              <span class="doc-size">PDF • 11 KB</span>
+              <div class="doc-actions">
+                <a href="documentation/Thesis_Checklist.pdf" target="_blank" class="btn btn-outline btn-sm">Preview</a>
+                <a href="documentation/Thesis_Checklist.pdf" download class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PRESENTATIONS SECTION
+       =================================================================== -->
+  <section class="section section-white" id="presentations">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">05 / Presentation Slides</span>
+        <h2 class="section-title">Past & Scheduled Presentations</h2>
+        <p class="section-subtitle">
+          Slide decks and demonstration walkthroughs presented before the SLIIT academic review panel throughout the research lifecycle.
+        </p>
+      </div>
+
+      <div class="presentation-grid">
+        <!-- Proposal Presentation -->
+        <div class="presentation-card">
+          <div class="pres-header-banner">
+            <div class="pres-tag">Milestone 01</div>
+            <h4 class="pres-title">Project Proposal Presentation</h4>
+          </div>
+          <div class="pres-body">
+            <p class="pres-desc">
+              Initial academic pitch outlining project scope, clinical justification for elderly care, dataset acquisition strategy, and individual module allocation among the 4 members.
+            </p>
+            <ul class="pres-meta-list">
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Presented to: Examination Panel
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Format: Microsoft PowerPoint (.pptx)
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Status: Completed & Approved
+              </li>
+            </ul>
+            <a href="presentations/Proposal_Presentation.pptx" download class="btn btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Proposal Deck
+            </a>
+          </div>
+        </div>
+
+        <!-- PP1 Presentation -->
+        <div class="presentation-card">
+          <div class="pres-header-banner">
+            <div class="pres-tag">Milestone 02</div>
+            <h4 class="pres-title">Progress Presentation 1 (PP1)</h4>
+          </div>
+          <div class="pres-body">
+            <p class="pres-desc">
+              15-slide comprehensive progress review demonstrating sensor driver integration, raw signal denoising, feature extraction scripts, and initial individual ML training results.
+            </p>
+            <ul class="pres-meta-list">
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Presented to: Supervisor & Co-Supervisor
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Deck: 15 Detailed Slides
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Focus: Proof-of-concept Validation
+              </li>
+            </ul>
+            <a href="presentations/PP1_Presentation.pptx" download class="btn btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PP1 Deck
+            </a>
+          </div>
+        </div>
+
+        <!-- PP2 Presentation -->
+        <div class="presentation-card">
+          <div class="pres-header-banner" style="background: linear-gradient(135deg, var(--navy-900), var(--cyan-600));">
+            <div class="pres-tag">Milestone 03</div>
+            <h4 class="pres-title">Progress Presentation 2 (PP2)</h4>
+          </div>
+          <div class="pres-body">
+            <p class="pres-desc">
+              29-slide integrated review showcasing dual-node telemetry, FastAPI WebSocket routing, Master Risk Index fusion, OpenStreetMap emergency dispatch, and 10/10 test results.
+            </p>
+            <ul class="pres-meta-list">
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Presented to: Mid-term Assessment Panel
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Deck: 29 Comprehensive Slides
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Focus: Full System Cohesion & Testing
+              </li>
+            </ul>
+            <a href="presentations/PP2_Presentation.pptx" download class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PP2 Deck
+            </a>
+          </div>
+        </div>
+
+        <!-- Final Presentation -->
+        <div class="presentation-card">
+          <div class="pres-header-banner" style="background: linear-gradient(135deg, #1e1b4b, #4338ca);">
+            <div class="pres-tag" style="color: #a5b4fc;">Milestone 04</div>
+            <h4 class="pres-title">Final Assessment Presentation</h4>
+          </div>
+          <div class="pres-body">
+            <p class="pres-desc">
+              Comprehensive final project defense deck covering overall research novelty, clinical validation, master risk fusion, and live system demonstration before the evaluation panel.
+            </p>
+            <ul class="pres-meta-list">
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Examination Panel & External Evaluator
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Weightage: 40% Final Assessment
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Status: Scheduled / In Preparation
+              </li>
+            </ul>
+            <a href="presentations/Final_Presentation_Template.pptx" download class="btn btn-outline" style="border-style: dashed; opacity: 0.9;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Final Deck (Scheduled)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       ABOUT US (TEAM & SUPERVISORS)
+       =================================================================== -->
+  <section class="section section-pale" id="team">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">06 / Research Team</span>
+        <h2 class="section-title">Meet Group R26-IT-108</h2>
+        <p class="section-subtitle">
+          Final-year undergraduate researchers from the Faculty of Computing, Sri Lanka Institute of Information Technology, under expert academic guidance.
+        </p>
+      </div>
+
+      <!-- 4 Team Members Grid -->
+      <div class="team-grid">
+        <!-- Member 1 -->
+        <div class="member-card">
+          <div class="member-photo-wrap">
+            <img src="images/member_abeysinghe.jpg" alt="Abeysinghe S.A.M.M." class="member-photo" loading="lazy">
+            <span class="member-id-tag">IT22081148</span>
+          </div>
+          <div class="member-info">
+            <h4 class="member-name">Abeysinghe S.A.M.M.</h4>
+            <div class="member-role">Undergraduate Researcher</div>
+            <div class="member-component">
+              <strong>Component:</strong> Cardiovascular Anomaly Detection & Wearable Arrhythmia Screening (AD8232 ECG, MIT-BIH)
+            </div>
+            <a href="mailto:it22081148@my.sliit.lk" class="member-email">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              it22081148@my.sliit.lk
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="member-card">
+          <div class="member-photo-wrap">
+            <img src="images/member_lakshan.jpg" alt="Lakshan N.K.T." class="member-photo" loading="lazy">
+            <span class="member-id-tag">IT22196156</span>
+          </div>
+          <div class="member-info">
+            <h4 class="member-name">Lakshan N.K.T.</h4>
+            <div class="member-role">Undergraduate Researcher</div>
+            <div class="member-component">
+              <strong>Component:</strong> Waist-Worn Smart Belt for Kinematic Fall & Immobility Detection (MPU6050, SisFall)
+            </div>
+            <a href="mailto:it22196156@my.sliit.lk" class="member-email">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              it22196156@my.sliit.lk
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="member-card">
+          <div class="member-photo-wrap">
+            <img src="images/member_dissanayaka.jpg" alt="Dissanayaka D.M.S.K." class="member-photo" loading="lazy">
+            <span class="member-id-tag">IT22291196</span>
+          </div>
+          <div class="member-info">
+            <h4 class="member-name">Dissanayaka D.M.S.K.</h4>
+            <div class="member-role">Undergraduate Researcher</div>
+            <div class="member-component">
+              <strong>Component:</strong> Smart Multi-Sensor Respiratory, Hypoxemia & Sepsis Deterioration System (MAX30102, MLX90614)
+            </div>
+            <a href="mailto:it22291196@my.sliit.lk" class="member-email">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              it22291196@my.sliit.lk
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="member-card">
+          <div class="member-photo-wrap">
+            <img src="images/member_peshala.jpg" alt="Edirisinghe A.P. Peshala" class="member-photo" loading="lazy">
+            <span class="member-id-tag">IT22146410</span>
+          </div>
+          <div class="member-info">
+            <h4 class="member-name">Edirisinghe A.P. Peshala</h4>
+            <div class="member-role">Undergraduate Researcher</div>
+            <div class="member-component">
+              <strong>Component:</strong> Neurological Stress Detection & Multisensor Affective Computing (GSR, WESAD, Vision)
+            </div>
+            <a href="mailto:it22146410@my.sliit.lk" class="member-email">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              it22146410@my.sliit.lk
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supervisors Showcase -->
+      <div style="margin-top: 1rem;">
+        <h3 style="font-size: 1.45rem; text-align: center; margin-bottom: 2rem;">Academic Project Supervisors</h3>
+        
+        <div class="supervisors-grid">
+          <!-- Supervisor -->
+          <div class="supervisor-card">
+            <div class="supervisor-avatar">
+              <img src="images/supervisor_nelum.jpg" alt="Mr. Nelum Chathuranga Amarasena">
+            </div>
+            <div class="supervisor-details">
+              <h4>Mr. Nelum Chathuranga Amarasena</h4>
+              <div class="supervisor-role">Project Supervisor</div>
+              <div class="supervisor-affil">
+                Assistant Lecturer • Department of Information Technology<br>
+                Faculty of Computing, Sri Lanka Institute of Information Technology (SLIIT)
+              </div>
+            </div>
+          </div>
+
+          <!-- Co-Supervisor -->
+          <div class="supervisor-card">
+            <div class="supervisor-avatar">
+              <img src="images/supervisor_samadhi.jpg" alt="Mr. Samadhi Rathnayake">
+            </div>
+            <div class="supervisor-details">
+              <h4>Mr. Samadhi Rathnayake</h4>
+              <div class="supervisor-role">Project Co-Supervisor</div>
+              <div class="supervisor-affil">
+                Lecturer • Department of Information Technology<br>
+                Faculty of Computing, Sri Lanka Institute of Information Technology (SLIIT)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       CONTACT US SECTION
+       =================================================================== -->
+  <section class="section section-white" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">07 / Inquiries & Feedback</span>
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">
+          Have inquiries regarding our research methodology, prototype demonstrations, or academic collaboration? Reach out to Group R26-IT-108.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Meta Info -->
+        <div class="contact-info-panel">
+          <span class="section-tag" style="background: rgba(255,255,255,0.1); color: #93c5fd; border-color: rgba(255,255,255,0.2);">Campus Contact</span>
+          <h3>Academic Information</h3>
+          <p>
+            This research is conducted under the Department of Information Technology, Faculty of Computing, Sri Lanka Institute of Information Technology.
+          </p>
+
+          <div class="contact-meta-items">
+            <div class="contact-meta-item">
+              <div class="contact-meta-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-meta-text">
+                <h5>Campus Location</h5>
+                <p>SLIIT Malabe Campus, New Kandy Road, Malabe, Sri Lanka.</p>
+              </div>
+            </div>
+
+            <div class="contact-meta-item">
+              <div class="contact-meta-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-meta-text">
+                <h5>Email Inquiries</h5>
+                <p>r26-it-108@sliit.lk / research.computing@sliit.lk</p>
+              </div>
+            </div>
+
+            <div class="contact-meta-item">
+              <div class="contact-meta-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="contact-meta-text">
+                <h5>Telephone</h5>
+                <p>+94 11 754 4801 (SLIIT General Line)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Form -->
+        <div class="contact-form-panel">
+          <h3 style="font-size: 1.35rem; color: var(--navy-900); margin-bottom: 0.5rem;">Send a Research Inquiry</h3>
+          <p style="font-size: 0.9rem; color: var(--slate-500); margin-bottom: 1.5rem;">Fill out the form below to connect directly with the research group.</p>
+
+          <div id="form-feedback" style="display: none;"></div>
+
+          <form id="project-contact-form">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Full Name *</label>
+              <input type="text" id="contact-name" name="name" class="form-control" placeholder="Prof. / Dr. / Mr. / Ms. Your Name" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address *</label>
+              <input type="email" id="contact-email" name="email" class="form-control" placeholder="your.email@institution.edu" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-subject">Inquiry Subject</label>
+              <input type="text" id="contact-subject" name="subject" class="form-control" placeholder="e.g. Prototype Demonstration, Dataset Questions">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message *</label>
+              <textarea id="contact-message" name="message" class="form-control" placeholder="Write your message or inquiry here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Send Message
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       MODAL PREVIEW DIALOG
+       =================================================================== -->
+  <div class="modal-backdrop" id="preview-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      <h3 id="modal-title" style="margin-bottom: 1rem; color: var(--navy-900); font-size: 1.35rem;"></h3>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       FOOTER
+       =================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4>Smart<span>Glove</span> (R26-IT-108)</h4>
+          <p>
+            An Edge AI and multi-sensor wearable research system for continuous elderly physiological screening, fall detection, and emergency dispatch routing.
+          </p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--cyan-400);">
+            Faculty of Computing • SLIIT Malabe Campus
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <div class="footer-links">
+            <a href="#home" class="footer-link">Home</a>
+            <a href="#domain" class="footer-link">Research Domain</a>
+            <a href="#components" class="footer-link">The 4 Components</a>
+            <a href="#milestones" class="footer-link">Project Milestones</a>
+            <a href="#documents" class="footer-link">Official Documents</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Research Pillars</h5>
+          <div class="footer-links">
+            <a href="#components" class="footer-link">Arrhythmia Screening</a>
+            <a href="#components" class="footer-link">Smart Belt Fall Detection</a>
+            <a href="#components" class="footer-link">Hypoxemia & Sepsis Warning</a>
+            <a href="#components" class="footer-link">Multisensor Stress Detection</a>
+            <a href="#architecture" class="footer-link">System Architecture</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Academic Info</h5>
+          <div class="footer-links">
+            <a href="http://cdap.sliit.lk/" target="_blank" class="footer-link">SLIIT CDAP Portal ↗</a>
+            <a href="https://www.sliit.lk" target="_blank" class="footer-link">SLIIT University ↗</a>
+            <a href="documentation/Thesis_R26_IT_108_Common.pdf" target="_blank" class="footer-link">Integrated Report ↗</a>
+            <a href="#team" class="footer-link">Research Supervisors</a>
+            <a href="#contact" class="footer-link">Inquiries & Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Group R26-IT-108. All Rights Reserved. Faculty of Computing, Sri Lanka Institute of Information Technology (SLIIT).
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-500);">
+          Designed in accordance with SLIIT CDAP Website Guidelines
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
